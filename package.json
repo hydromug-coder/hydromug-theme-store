@@ -1,11 +1,11 @@
 {
-  "name": "theme-raed",
+  "name": "hydromug-theme",
   "version": "1.358.0",
   "description": "Salla Theme",
   "license": "MIT",
-  "repository": {
+    "repository": {
     "type": "git",
-    "url": "git+https://github.com/SallaApp/theme-raed.git"
+    "url": "git+https://github.com/hydromug-coder/hydromug-theme-store.git"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -15,7 +15,7 @@
     "development": "webpack --mode development",
     "watch": "webpack --mode development --watch"
   },
-  "author": "Salla",
+  "author": "Hydromug",
   "dependencies": {
     "@babel/runtime": "^8.0.0",
     "animejs": "^3.2.2",
