@@ -69,6 +69,13 @@
   &--fixed{
     img{
       @apply w-full object-cover rounded-md border-none block bg-gray-100;
+      /* Reserve the exact box the banner image renders at (prevents CLS from the
+         declared 728x90 / 390x195 asset sizes not matching the old 1200x300 attrs). */
+      aspect-ratio: 728 / 90;
+
+      @media screen and (max-width: 767px) {
+        aspect-ratio: 390 / 195;
+      }
     }
   }
 }

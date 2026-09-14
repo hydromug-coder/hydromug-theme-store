@@ -1,0 +1,12 @@
+# Without this file @babel/preset-env falls back to its very old default
+# target list, which transpiles/polyfills modern JS syntax (arrow functions,
+# etc.) that every real visitor's browser already supports natively — this is
+# exactly what Lighthouse's "Legacy JavaScript" / "avoid serving legacy
+# JavaScript to modern browsers" audit flags. Scoping the target list to
+# actively-used, non-dead browsers lets Babel skip those unneeded transforms.
+> 0.5%
+last 2 versions
+Firefox ESR
+not dead
+not ie 11
+not op_mini all

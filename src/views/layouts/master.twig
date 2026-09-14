@@ -80,9 +80,19 @@
     {% hook head %}
     {% block styles %}{% endblock %}
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
-    <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
-    <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
-    
+
+    {# theme.font.path (@font-face rules) and the icon font are not needed for
+       first paint: app.css already declares a system-font fallback chain for
+       body text, and icons simply pop in a beat later once this loads. Both
+       are loaded non-blocking via the standard preload+swap pattern, with a
+       <noscript> fallback so they still load normally without JS. #}
+    <link rel="preload" as="style" href="{{ theme.font.path|cdn }}" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="{{ 'fonts/sallaicons.css'|cdn }}" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
+        <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
+    </noscript>
+
     <style>
         :root {
             --font-main: '{{theme.font.name}}';
